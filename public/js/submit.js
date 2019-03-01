@@ -4,7 +4,7 @@ new Vue({
     delimiters: ['${', '}'],
     data: {
         url: '',
-        baseUrl: window.location,
+        baseUrl: `${window.location.protocol}//${window.location.hostname}:${window.location.port}/`,
         showShortenedURL: false,
         shortenData: {}
     },
