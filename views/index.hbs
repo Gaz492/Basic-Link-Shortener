@@ -1,38 +1,30 @@
-{{#> layout/base}}
+{{#> layout/bulma}}
     {{#*inline "content-block"}}
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-            <header class="masthead mb-auto">
-                <div class="inner">
-                    <h3 class="masthead-brand">Wuffs
-                        <small>.dev</small>
-                    </h3>
-                    <!--<nav class="nav nav-masthead justify-content-center">-->
-                        <!--<a class="nav-link active" href="#">Home</a>-->
-                        <!--<a class="nav-link" href="#">Features</a>-->
-                        <!--<a class="nav-link" href="#">Contact</a>-->
-                    <!--</nav>-->
-                </div>
-            </header>
+        <section class="hero is-info is-fullheight" id="app">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="column is-6 is-offset-3">
+                        <h1 class="title">Wuffs
+                            <small>.dev</small>
+                        </h1>
+                        <h2 class="subtitle">Welcome to Wuffs.dev link shortener</h2>
+                        <div class="box" v-if="showShortenedURL">Shortened URL: <input class="input" type="text" onClick="this.select();" readonly :value="baseUrl + shortenData.urlCode"></div>
+                        <div class="box">
+                            <form @submit.prevent="processForm">
+                                <div class="field is-grouped">
+                                    <p class="control is-expanded">
+                                        <input class="input" type="url" placeholder="Enter a URL to shorten" name="url" v-model="url">
+                                    </p>
+                                    <p class="control">
+                                        <button class="button is-info" type="submit">Shorten!</button>
+                                    </p>
+                                </div>
+                            </form>
 
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">>Wuffs
-                    <small>.dev</small>
-                </h1>
-                <p class="lead">Welcome to Wuffs.dev link shortener</p>
-                <form>
-                    <div class="form-group">
-                        <input type="url" class="form-control" id="urlInput" aria-describedby="urlHelp" placeholder="Enter URL">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Submit</button>
-                </form>
-            </main>
-
-            <footer class="mastfoot mt-auto">
-                <!--<div class="inner">-->
-                <!--<p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a-->
-                <!--href="https://twitter.com/mdo">@mdo</a>.</p>-->
-                <!--</div>-->
-            </footer>
-        </div>
+                </div>
+            </div>
+        </section>
     {{/inline}}
-{{/layout/base}}
+{{/layout/bulma}}
