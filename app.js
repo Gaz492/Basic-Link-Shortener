@@ -8,8 +8,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const config = require('./config/config');
+const handlebars = require('express-handlebars');
 
+const config = require('./config/config');
 require('./models/URLSchema');
 mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
@@ -29,6 +30,26 @@ const apiRouter = require('./routes/api');
 const app = express();
 
 // view engine setup
+app.engine('.hbs', handlebars({
+    helpers: {
+        ifCond: function (conditional, options) {
+            if (options.hash.value === conditional) {
+                return options.fn(this)
+            } else {
+                return options.inverse(this);
+            }
+        },
+        ifNotCond: function (conditional, options) {
+            if (options.hash.value !== conditional) {
+                return options.fn(this)
+            } else {
+                return options.inverse(this);
+            }
+        }
+    },
+    extname: 'hbs',
+    partialsDir: [path.join(__dirname, '/views/partials')]
+}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
