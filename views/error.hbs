@@ -3,28 +3,18 @@
         <section class="hero is-info is-fullheight">
             <div class="hero-body">
                 <div class="container has-text-centered">
-                    <div class="column is-6 is-offset-3"  id="app">
+                    <div class="column is-6 is-offset-3" id="app">
                         <h1 class="title">Wuffs
                             <small>.dev</small>
                         </h1>
                         <h2 class="subtitle">Oops, something's wrong...</h2>
-                        {{#if invalidURL}}
-                            <h2 class="subtitle">We were unable to find the URL you clicked, it may have been deleted or
-                                never existed</h2>
-                        {{/if}}
-                        <div class="box" v-if="showShortenedURL">Shortened URL: <input class="input" type="text" onClick="this.select();" readonly :value="baseUrl + shortenData.urlCode"></div>
-                        <div class="box">
-                            <form @submit.prevent="processForm">
-                                <div class="field is-grouped">
-                                    <p class="control is-expanded">
-                                        <input class="input" type="url" placeholder="Enter a URL to shorten" name="url" v-model="url">
-                                    </p>
-                                    <p class="control">
-                                        <button class="button is-info" type="submit">Shorten!</button>
-                                    </p>
-                                </div>
-                            </form>
-                        </div>
+                        <h2 class="subtitle">We were unable to find the URL you clicked, it may have been deleted or
+                            never existed</h2>
+                        <h2 class="subtitle">{{message}}</h2>
+                        <h2 class="subtitle">{{error.status}}</h2>
+                        <pre>
+                            {{error.stack}}
+                        </pre>
                     </div>
                 </div>
             </div>
