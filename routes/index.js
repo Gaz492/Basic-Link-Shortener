@@ -4,9 +4,9 @@ const URLShorten = mongoose.model('URLShorten');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
-});
+// router.get('/', function (req, res, next) {
+//     res.render('index', {title: 'Express'});
+// });
 
 router.get('/error', function (req, res, next) {
     res.render('error', {title: 'URL Not Found', invalidURL: true})
