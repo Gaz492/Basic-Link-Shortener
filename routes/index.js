@@ -9,7 +9,8 @@ router.get('/:code', async (req, res, next) => {
     if (item) {
         res.redirect(item.originalURL);
     }else{
-        res.redirect('/error')
+        // res.redirect('/error')
+        res.send("Fuck")
     }
 });
 
