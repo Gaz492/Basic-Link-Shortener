@@ -8,9 +8,8 @@ router.get('/:code', async (req, res, next) => {
     const item = await URLShorten.findOne({urlCode: urlCode});
     if (item) {
         res.redirect(item.originalURL);
-    }else{
-        // res.redirect('/error')
-        res.send("Fuck")
+    } else {
+        res.redirect('/#/error')
     }
 });
 
