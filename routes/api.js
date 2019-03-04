@@ -12,10 +12,10 @@ router.post('/shorten', async (req, res, next) => {
     if (validUrl.isUri(originalURL)) {
 
         try {
-            URLShorten.findOne({originalURL}, async(err, shortURL) => {
-                if(shortURL){
+            URLShorten.findOne({originalURL}, async (err, shortURL) => {
+                if (shortURL) {
                     res.status(200).json({urlCode: shortURL.urlCode});
-                }else{
+                } else {
                     const urlCode = shortId.generate();
                     const itemToBeSaved = {originalURL, urlCode, updatedAt};
 
@@ -26,10 +26,10 @@ router.post('/shorten', async (req, res, next) => {
                 }
             });
         } catch (err) {
-            res.status(401).json('Invalid User Id');
+            res.status(401).json({error: 'Invalid User Id'});
         }
     } else {
-        return res.status(401).json('Invalid Original Url.');
+        return res.status(401).json({error: 'Invalid Original Url.'});
     }
 });
 
